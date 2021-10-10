@@ -4,13 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import Header from "../header/header.component";
 
-test("Succes render header with title", () => {
-  const testMessage = "Movie Finder";
+test("render header with title", () => {
+  const title = "Flickr Gallery";
   render(
     <BrowserRouter>
-      <Header>{testMessage}</Header>
+      <Header/>
     </BrowserRouter>
   );
 
-  expect(screen.getByTestId("title")).toHaveTextContent(testMessage);
+  expect(screen.getByTestId("title")).toHaveTextContent(title);
 });
