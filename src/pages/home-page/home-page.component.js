@@ -44,7 +44,7 @@ const HomePage = () => {
   const searchPhoto = async (page, search) => {
     try {
       setIsLoading(true);
-      const url = `http://localhost:4000/images?&currentPage=${page}&tags=${search}`;
+      const url = `https://flickr-gallery-be-2bsa3rk35-bennixie98.vercel.app/images?&currentPage=${page}&tags=${search}`;
       const result = await axios.get(url);
       setPhotoList(result.data);
       if (result.data.meta.totalData === 0) {
@@ -67,7 +67,7 @@ const HomePage = () => {
   const getPhotoList = async (page) => {
     try {
       setIsLoading(true);
-      const url = `http://localhost:4000/images?&currentPage=${page}`;
+      const url = `https://flickr-gallery-be-2bsa3rk35-bennixie98.vercel.app/images?&currentPage=${page}`;
       const result = await axios.get(url);
       setPhotoList(result.data);
       if (result.data.meta.currentPage === result.data.meta.totalPage) {
@@ -133,7 +133,7 @@ const HomePage = () => {
             onKeyDown={(event) => _onKeyDown(event)}
             onChange={(event) => _onChangeInput(event.target.value)}
           />
-          <button onClick={(event) => _onSubmit(event)} type="submit">
+          <button className="btn-primary" onClick={(event) => _onSubmit(event)}>
             <span className="submit-text">Search</span>
           </button>
         </div>
@@ -152,7 +152,7 @@ const HomePage = () => {
       )}
       {!isMaxPage && !isLoading && (
         <div className="show-more" onClick={handleShowMore}>
-          <span className="pointer"> Show More</span>
+          <button> Show More</button>
         </div>
       )}
       {_renderPosterModal()}

@@ -7,7 +7,7 @@
   width: 100%;
   padding: 30px;
   background: #252936;
-  border-radius: 30px;
+  border-radius: 15px;
   color: white;
   margin-top: 25px;
   text-align: center;
@@ -18,26 +18,9 @@
   place-content: center;
 }
 
-.logo {
-  width: 150px;
-}
-
 .text-title {
   font-size: 34px;
   color: white;
   text-decoration: underline;
-  font-weight: bold;
-}
-
-h3 {
-  color: white;
-  text-decoration: underline;
-}
-
-.submit-text {
-  font-family: -apple-system, "Baloo Tammudu 2", "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  color: white;
   font-weight: bold;
 }
