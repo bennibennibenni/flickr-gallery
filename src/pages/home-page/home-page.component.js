@@ -87,7 +87,7 @@ const HomePage = () => {
     getPhotoList(pageNumber);
   }, []);
 
-  const handleShowMore = () => {
+  const handleNext = () => {
     const nextPage = pageNumber + 1;
     setPageNumber(nextPage);
     if (isSearching) {
@@ -97,8 +97,18 @@ const HomePage = () => {
     }
   };
 
+  const handlePrevious = () => {
+    const backPage = pageNumber - 1;
+    setPageNumber(backPage);
+    if (isSearching) {
+      searchPhoto(backPage, searchQuery);
+    } else {
+      getPhotoList(backPage);
+    }
+  };
+
   const _onClick = (photo) => () => {
-    setSelectedPhoto(photo)
+    setSelectedPhoto(photo);
     setShowModal(true);
   };
 
@@ -110,11 +120,7 @@ const HomePage = () => {
     if (showModal) {
       return (
         <Modal showModal={showModal} onCloseModal={_onCloseModal}>
-          <img
-            className="poster-img"
-            src={selectedPhoto}
-            alt='media'
-          />
+          <img className="poster-img" src={selectedPhoto} alt="media" />
         </Modal>
       );
     }
@@ -146,15 +152,24 @@ const HomePage = () => {
       ) : (
         <div className="photo-grid white">
           {photoList?.data.map((photo, index) => {
-            return <Photo key={index} post={photo} onClick={_onClick}/>;
+            return <Photo key={index} post={photo} onClick={_onClick} />;
           })}
         </div>
       )}
-      {!isMaxPage && !isLoading && (
-        <div className="show-more" onClick={handleShowMore}>
-          <button> Show More</button>
-        </div>
-      )}
+      <div className="action">
+        {pageNumber !== 1 && !isLoading && (
+          <button onClick={handlePrevious} className="f-left">
+            Previous
+          </button>
+        )}
+
+        {!isMaxPage && !isLoading && (
+          <button onClick={handleNext} className="f-right">
+            Next
+          </button>
+        )}
+      </div>
+
       {_renderPosterModal()}
     </>
   );

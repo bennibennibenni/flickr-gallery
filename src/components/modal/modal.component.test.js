@@ -3,6 +3,6 @@ import * as React from "react";
 import { render } from "@testing-library/react";
 import Modal from "../modal/modal.component";
 
-test("Succes render modal", () => {
+test("render modal", () => {
   render(<Modal />);
 });

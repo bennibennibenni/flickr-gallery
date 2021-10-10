@@ -21,7 +21,7 @@ describe("render photo with props data", () => {
     },
   };
   test("photo component contain img tag and source", () => {
-    render(<Photo {...props}></Photo>);
+    render(<Photo {...props} onClick={jest.fn()}></Photo>);
     const logo = screen.getByRole("img");
     expect(logo).toHaveAttribute(
       "src",
@@ -31,14 +31,14 @@ describe("render photo with props data", () => {
   });
 
   test("photo component contain author name", () => {
-    render(<Photo {...props}></Photo>);
+    render(<Photo {...props} onClick={jest.fn()}></Photo>);
     expect(screen.getByTestId("author-name")).toHaveTextContent(
       "Cassandra Mosley"
     );
   });
 
   test("photo component contain tags", () => {
-    render(<Photo {...props}></Photo>);
+    render(<Photo {...props} onClick={jest.fn()}></Photo>);
     expect(screen.getByTestId("tags")).toHaveTextContent(
       "districtofcolumbia spring cherryblossom northamerica flower tidalbasin unitedstates jeffersonmemorial bloom dc"
     );
