@@ -1,0 +1,12 @@
+.grid-figure {
+  margin: 0;
+  padding: 1rem;
+  background-color: #4f52631f;
+  color: white;
+  overflow-wrap: break-word;
+  border-radius: 15px;
+}
+
+.grid-photo {
+  cursor: pointer;
+}

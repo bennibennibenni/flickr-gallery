@@ -13,6 +13,7 @@ const HomePage = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [isMaxPage, setIsMaxPage] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState({});
 
   const _onChangeInput = (searchValue) => {
     setSearchQuery(searchValue);
@@ -96,11 +97,10 @@ const HomePage = () => {
     }
   };
 
-  // const _onClick = (imdbID) => () => {
-  //   const movie = photoList.find((data) => data.imdbID === imdbID);
-  //   setSelectedMovie(movie);
-  //   setShowModal(true);
-  // };
+  const _onClick = (photo) => () => {
+    setSelectedPhoto(photo)
+    setShowModal(true);
+  };
 
   const _onCloseModal = () => {
     setShowModal(false);
@@ -110,11 +110,11 @@ const HomePage = () => {
     if (showModal) {
       return (
         <Modal showModal={showModal} onCloseModal={_onCloseModal}>
-          {/* <img
+          <img
             className="poster-img"
-            src={selectedMovie.Poster}
-            alt={selectedMovie.Title}
-          /> */}
+            src={selectedPhoto}
+            alt='media'
+          />
         </Modal>
       );
     }
@@ -146,7 +146,7 @@ const HomePage = () => {
       ) : (
         <div className="photo-grid white">
           {photoList?.data.map((photo, index) => {
-            return <Photo key={index} post={photo} i={index} />;
+            return <Photo key={index} post={photo} onClick={_onClick}/>;
           })}
         </div>
       )}

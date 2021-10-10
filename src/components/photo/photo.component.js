@@ -1,6 +1,8 @@
 import React from "react";
+import "./photo.styles.css";
 
 const Photo = (props) => {
+  const { onClick } = props;
   const options = {
     day: "numeric",
     month: "short",
@@ -20,7 +22,7 @@ const Photo = (props) => {
 
   return (
     <figure className="grid-figure">
-      <img src={props.post.media.m} alt="media" className="grid-photo" />
+      <img  onClick={onClick(props.post.media.m)} src={props.post.media.m} alt="media" className="grid-photo" />
       <figcaption>
         <p data-testid="author-name">{authorName[1]}</p>
         <p data-testid="date">{date}</p>
