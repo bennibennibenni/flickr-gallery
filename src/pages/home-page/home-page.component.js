@@ -68,7 +68,7 @@ const HomePage = () => {
   const getPhotoList = async (page) => {
     try {
       setIsLoading(true);
-      const url = `https://flickr-gallery-be-2bsa3rk35-bennixie98.vercel.app/images?&currentPage=${page}`;
+      const url = `https://flickr-gallery-be-production.up.railway.app/images?&currentPage=${page}`;
       const result = await axios.get(url);
       setPhotoList(result.data);
       if (result.data.meta.currentPage === result.data.meta.totalPage) {
